@@ -121,6 +121,15 @@ video {
   -moz-transform: rotateY(180deg);
 }
 
+
+.background_red{
+  background-color: red;
+}
+.background_blue{
+  background-color: #2f80ec;
+}
+
+
 @media (max-width: 700px) {
   #show_chat {
     display: flex;
