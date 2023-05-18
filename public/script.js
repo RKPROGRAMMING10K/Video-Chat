@@ -28,6 +28,7 @@ navigator.mediaDevices.getUserMedia({
 }).then((stream) =>{
     myStream = stream;
     addVideoStream(myVideo, stream);
+
     socket.on('user connected', (userId) => {
         connectToNewUser(userId, stream);
     })
@@ -38,11 +39,12 @@ navigator.mediaDevices.getUserMedia({
         addVideoStream(video, userVideoStream)
     })
     })
+
 })
 
 function addVideoStream(video, stream){
     video.srcObject = stream;
-    video.addEvenetListener("loadedmetadata", () => 
+    video.addEventListener("loadedmetadata", () => 
     {
         video.play();
         $('#video_grid').append(video);
