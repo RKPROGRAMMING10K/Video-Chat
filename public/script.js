@@ -13,13 +13,7 @@ myVideo.muted = true;
 
 let myStream;
 
-function connectToNewUser(userId, stream) {
-    const call = peer.call(userId, stream)
-    const video = document.createElement("video")
-    call.on("stream",(userVideoStream) => {
-        addVideoStream(video, userVideoStream)
-    })
-}
+
 
 
 navigator.mediaDevices.getUserMedia({
@@ -28,7 +22,6 @@ navigator.mediaDevices.getUserMedia({
 }).then((stream) =>{
     myStream = stream;
     addVideoStream(myVideo, stream);
-
     socket.on('user connected', (userId) => {
         connectToNewUser(userId, stream);
     })
@@ -41,6 +34,14 @@ navigator.mediaDevices.getUserMedia({
     })
 
 })
+
+function connectToNewUser(userId, stream) {
+    const call = peer.call(userId, stream)
+    const video = document.createElement("video")
+    call.on("stream",(userVideoStream) => {
+        addVideoStream(video, userVideoStream)
+    })
+}
 
 function addVideoStream(video, stream){
     video.srcObject = stream;
