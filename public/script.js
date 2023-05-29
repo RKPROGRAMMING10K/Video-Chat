@@ -124,11 +124,11 @@ $(function () {
             to: to
         }
         $.ajax({
-            url: "send-mail",
+            url: "/send-mail",
             type: "post",
             data: JSON.stringify(data),
             dataType: "json",
-            contentType:"json/application",
+            contentType:"application/json",
             success: function (result){
                 alert ("invite send")
             },
