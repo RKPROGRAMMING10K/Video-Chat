@@ -4,6 +4,7 @@ const app = express();
 const server = require("http").Server(app);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(express.json());
 
 const { v4: uuidv4 } = require("uuid");
 
@@ -19,7 +20,7 @@ const peerServer = ExpressPeerServer(server, {
     debug: true,
 });
 
-const trnasporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransport({
     port: 465,
     host: 'smtp.gmail.com',
     auth:{
@@ -45,7 +46,7 @@ app.post("/send-mail", (req, res) =>{
         subject: 'Join The video Chat with Me...',
         html: `<p>Hello</p><p>Came and join for the video chat</p><p>Here Click the link ${url}</p>`
     }
-    trnasporter.sendMail(mailData, (error, info)=>{
+    transporter.sendMail(mailData, (error, info)=>{
         if(error){
             return console.log(error)
         }
