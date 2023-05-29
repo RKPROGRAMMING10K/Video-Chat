@@ -36,7 +36,7 @@ app.get("/:room", (req, res) =>{
 })
 
 
-app.post("/send-mail", (res, req) =>{
+app.post("/send-mail", (req, res) =>{
     const to = req.body.to
     const url = req.body.url
     const mailData = {
