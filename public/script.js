@@ -97,6 +97,8 @@ $(function () {
         
     })
 
+
+
     $("#stop_video").click(function (){
         const enabled = myStream.getVideoTracks()[0].enabled
         if (enabled ){
@@ -113,6 +115,27 @@ $(function () {
             
         }
         
+    })
+
+    $("#invite_button").click(function (){
+        const to = prompt("Enter the Email Address: ")
+        let data = {
+            url: window.location.href,
+            to: to
+        }
+        $.ajax({
+            url: "send-mail",
+            type: "post",
+            data: JSON.stringify(data),
+            dataType: "json",
+            contentType:"json/application",
+            success: function (result){
+                alert ("invite send")
+            },
+            error: function(result){
+                console.log(result.responseJSON)
+            }
+        })
     })
 
 })
