@@ -20,7 +20,7 @@ const peerServer = ExpressPeerServer(server, {
 });
 
 const trnasporter = nodemailer.createTransport({
-    port: 587,
+    port: 465,
     host: 'smtp.gmail.com',
     auth:{
         user:  'technicalrk078@gmail.com',
